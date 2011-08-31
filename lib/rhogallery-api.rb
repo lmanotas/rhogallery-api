@@ -1,0 +1,5 @@
+require 'json'
+require 'httparty'
+require 'rhogallery-api/version'
+require 'rhogallery-api/consumer'
+require 'rhogallery-api/group'
