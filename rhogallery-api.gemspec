@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.description = %q{Rhoconnect rails plugin}
 
   s.rubyforge_project = nil  
-  s.add_dependency('httparty', '~>0.7.7')
   s.add_dependency('json', '~>1.5.4')
-
+  s.add_dependency('rest-client', '~>1.6.6')
+  
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

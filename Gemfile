@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 gem 'rake'
-gem 'httparty'
+gem 'rest-client'
 gem 'json'
 
 group :test do
