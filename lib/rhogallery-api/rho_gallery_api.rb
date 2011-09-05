@@ -60,12 +60,21 @@ class RhoGalleryApi
   end
   
   def method_missing(method_sym, *arguments, &block)
-    att = @attributes[method_sym] or @attributes[method_sym.to_s]
-    if att
-      att
+    @attributes = RhoGalleryApi.prepare_hash(@attributes)
+    if method_sym.to_s.slice("=")
+      att = method_sym.to_s.split("=").first.strip
+      if @attributes[att.to_sym]
+        @attributes[att.to_sym] = arguments.to_s
+      else
+        super
+      end
     else
-      super
+      att = @attributes[method_sym]
+      if att
+        att
+      else
+        super
+      end
     end
   end
-  
 end
