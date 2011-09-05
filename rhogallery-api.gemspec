@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require 'rhogallery-api/version'
 
 Gem::Specification.new do |s|
-  s.name        = "rhogallery-api"
+  s.name        = "rhogallery"
   s.version     = Rhogallery::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Rhomobile"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@rhomobile.com"]
   s.homepage    = %q{http://rhomobile.com}
   s.summary     = %q{Rhoconnect rails plugin}
-  s.description = %q{Rhoconnect rails plugin}
+  s.description = %q{Rhogallery api client}
 
   s.rubyforge_project = nil  
   s.add_dependency('json', '~>1.5.4')
