@@ -15,7 +15,11 @@ class RhoGalleryApi
   end
   
   def self.credentials
-    {:username => ENV['rhogallery_username'], :token => ENV['rhogallery_token']}
+    if ENV['rhogallery_username'] and ENV['rhogallery_token']
+      {:username => ENV['rhogallery_username'], :token => ENV['rhogallery_token']}
+    else
+      raise "You must set up your rhogallery credentials see README file"
+    end
   end
   
   def self.resource_url(username = ENV['rhogallery_username'], resource = "")
