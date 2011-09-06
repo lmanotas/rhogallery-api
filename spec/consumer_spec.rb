@@ -39,11 +39,17 @@ describe RhoGallery::Consumer do
   end
   
   context "Get and set consumers values" do
+    before(:each) do
+      @consumer = RhoGallery::Consumer.find_by_id("4e6146d5bdd0c8048c000004")
+    end
+    
     it "should get the consumer values and set new values" do
-      consumer = RhoGallery::Consumer.find_by_id("4e6146d5bdd0c8048c000004")
-      consumer.login.should == "some_login"
-      consumer.login = "the_new_login"
-      consumer.login.should == "the_new_login"
+      @consumer.login.should == "some_login"
+      @consumer.login = "the_new_login"
+      @consumer.login.should == "the_new_login"
+    end
+    it "should raise an error when an set attribute doesn't exist" do
+      lambda { @consumer.wrong_attribute = "some value" }.should raise_error
     end
   end
 end
