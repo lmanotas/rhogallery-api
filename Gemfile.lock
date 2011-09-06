@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rhogallery-api (0.0.1)
+    rhogallery (0.0.1)
       json (~> 1.5.4)
       rest-client (~> 1.6.6)
 
@@ -37,6 +37,6 @@ DEPENDENCIES
   rake
   rcov (~> 0.9.8)
   rest-client
-  rhogallery-api!
+  rhogallery!
   rspec (~> 2.5.0)
   webmock
