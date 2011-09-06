@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.date        = Time.now.strftime('%Y-%m-%d')
   s.email       = ["support@rhomobile.com"]
   s.homepage    = %q{http://rhomobile.com}
-  s.summary     = %q{Rhoconnect rails plugin}
+  s.summary     = %q{Rhogallery plugin}
   s.description = %q{Rhogallery api client}
 
   s.rubyforge_project = nil  
