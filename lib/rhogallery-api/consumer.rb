@@ -6,8 +6,12 @@ module RhoGallery
     end
   
     def update(data = @attributes, options = RhoGalleryApi.credentials, resource = "consumers/#{self.id}")
-      super(data, options, resource)
-      Consumer::find_by_id(self.id, options)
+      if super(data, options, resource)
+        @attributes = Consumer::find_by_id(self.id, options).get_attributes
+        self
+      else
+        false
+      end
     end
   
     def delete(options = RhoGalleryApi.credentials, resource = "consumers/#{self.id}")

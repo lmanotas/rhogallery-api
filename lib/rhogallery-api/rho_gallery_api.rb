@@ -2,6 +2,7 @@ class RhoGalleryApi
   
   def initialize(data = {})
     @attributes = data
+    @errors = String.new
   end
   
   def self.credentials=(user_credentials)
@@ -33,15 +34,34 @@ class RhoGalleryApi
     data
   end
   
+  def id
+    @attributes[:id]
+  end
+  
+  def errors
+    @errors.strip
+  end
+  
   protected
   
+  def get_attributes
+    @attributes
+  end
+  
   def create_new(data, options, resource)
-    RestClient.post RhoGalleryApi.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
-    true
+    begin
+      RestClient.post RhoGalleryApi.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
+      @errors = String.new
+      true
+    rescue RestClient::RequestFailed => e
+      @errors = e.response.body
+      false
+    end
   end
   
   def update(data, options, resource)
     RestClient.put RhoGalleryApi.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
+    true
   end
   
   def delete(options, resource)
@@ -57,10 +77,6 @@ class RhoGalleryApi
   def self.find_by_id(id, options, resource)
     res = RestClient::Resource.new(RhoGalleryApi.resource_url(options[:username], "#{resource}/#{id}"), :headers => {:Authorization => options[:token]})
     JSON.parse res.get
-  end
-  
-  def id
-    @attributes[:id]
   end
   
   def method_missing(method_sym, *arguments, &block)
