@@ -60,8 +60,14 @@ class RhoGalleryApi
   end
   
   def update(data, options, resource)
-    RestClient.put RhoGalleryApi.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
-    true
+    begin
+      RestClient.put RhoGalleryApi.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
+      true
+      @errors = String.new
+    rescue RestClient::RequestFailed => e
+      @errors = e.response.body
+      false
+    end
   end
   
   def delete(options, resource)

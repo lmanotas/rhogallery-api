@@ -9,6 +9,9 @@ describe RhoGalleryApi do
     end
     it "should not set and raise an error when is trying to set invalid credentials" do
       lambda { RhoGalleryApi.credentials = {} }.should raise_error
+      ENV['rhogallery_username'] = nil
+      ENV['rhogallery_token'] = nil
+      lambda { RhoGalleryApi.credentials }.should raise_error
     end
   end
 end
