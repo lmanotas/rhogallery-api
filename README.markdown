@@ -33,7 +33,8 @@ Then you have two classes that you can work with: RhoGallery::Consumer and RhoGa
 	  delete(data, options)     #to delete a consumer/group
 
 	  #data: consumer or group data, for example: name, cell, login, email. By default takes the data hash takes the attributes 
-	  #      added when is creating the instance ( RhoGallery::Group.new( {:name => "some group name" }) )
+	  #added when is creating the instance ( RhoGallery::Group.new( {:name => "some group name" }) ).
+		
 	  #options: credentials options, you can use a diferent credential in any time. 
 
 ##Get Consumers and Groups
