@@ -73,28 +73,32 @@ or if you want to find a consumer/group by id you can:
 
 ##Create new consumer/group
 
-You can create new groups and consumers with your own attributes and then saved as a new consumer/group.
+You can create new groups and consumers with your own attributes and then save it as a new consumer/group. (returns true or false).
 
 	consumer = RhoGallery::Consumer.new({
 		:login => "some_login", :name => "some name", :cell => "+55555", :email => "email@email.com"
 	})
-
+	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:login => "some_login", :name => "some name", :cell => "+55555", :email => "email@email.com"}>
+	
 	consumer.create_new
-	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"", :email=>"", :login=>"",:tags=>"", :password=>"", :name=>""}>
+	=> true
 	
 	group = RhoGallery::Group.new({:name => "new_group_name"})
+	=> #<RhoGallery::Group:0x1018881b6 @attributes={:name=>"new_group_name"}>
 	
 	group.create_new
-	=> #<RhoGallery::Group:0x1018881b6 @attributes={:name=>""}>
+	=> true
 
 or send it the data on the 'create_new' method is called
 
 	consumer = RhoGallery::Consumer.new
+	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"+55555", :email=>"email@email.com", 
+			:login=>"some_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
+			
 	consumer.create_new({
 		:login => "some_login", :name => "some name", :cell => "+55555", :email => "email@email.com"
 	})
-	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"+55555", :email=>"email@email.com", 
-			:login=>"some_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
+	=> true
 
 ##Update Method
 
@@ -113,7 +117,7 @@ and you can delete it too :)
 
 ##See Errors
 
-you can see the errors when something happend with :errors method, it should return an comma separated string with all the errors
+you can see the errors when the create_new and update methods returns false, with errors method. Example
 
 	group = RhoGallery::Group.new
 	=> #<RhoGallery::Group:0x1018881c7 @attributes={:name => ""}>
