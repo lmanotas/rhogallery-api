@@ -23,8 +23,18 @@ Also, you can see your credentials any time with:
 
 Then you have two classes that you can work with: RhoGallery::Consumer and RhoGallery::Group
 
-	RhoGallery::Consumer
+	RhoGalleryApi # Rhogallery Api Defaults configurations
+	
+	RhoGallery::Consumer 
 	RhoGallery::Group
+		
+	  create_new(data, options) #create a new consumer/group
+	  update(data, options)     #use this method to update data
+	  delete(data, options)     #to delete a consumer/group
+
+	  #data: consumer or group data, for example: name, cell, login, email. By default takes the data hash takes the attributes 
+    #      added when is creating the instance ( RhoGallery::Group.new( {:name => "some group name" }) )
+	  #options: credentials options, you can use a diferent credential in any time. 
 
 ##Get Consumers and Groups
 
@@ -111,4 +121,3 @@ you can see the errors when something happend with :errors method, it should ret
 	
 	group.errors
 	=> "Name can't be blank"
-
