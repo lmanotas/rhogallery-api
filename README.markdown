@@ -1,10 +1,14 @@
 Rhogallery API
 ==================
+##Instaling
+
 This is a ruby interface to connect with the rhohub rhogallery api. 
 
 	$ gem install rhogallery
 
 	require 'rhogallery-api'
+
+##Rhogallery Credentials
 
 First of all you need to set your rhogallery credentials (username and rhogallery token):
 
@@ -15,8 +19,16 @@ Also, you can see your credentials any time with:
 	RhoGalleryApi.credentials
 	=> {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_RHOGALLERY_TOKEN}
 
-Then you have two classes that you can work with: RhoGallery::Consumer and RhoGallery::Group, 
-you can get all your consumers and groups like this:
+##Rhogallery Resources
+
+Then you have two classes that you can work with: RhoGallery::Consumer and RhoGallery::Group
+
+	RhoGallery::Consumer
+	RhoGallery::Group
+
+##Get Consumers and Groups
+
+You can get all your consumers and groups like this:
 
 	RhoGallery::Consumer.find_all
 	=> [{"name":"John Doe","devices":["ios","android","blackberry"],"deactivated_id":null,
@@ -48,6 +60,8 @@ or if you want to find a consumer/group by id you can:
 	=> {"name":"rhomobile","created_at":"2011-01-14T15:37:42Z","updated_at":"2011-01-14T15:37:42Z",
 			"admin_id":"4d2e11dae433c241e9000001","id":"4d306dc697fcc274a6000009","active":true}
 
+##Create new consumer/group
+
 You can create new groups and consumers with your own attributes and then saved as a new consumer/group.
 
 	consumer = RhoGallery::Consumer.new({
@@ -71,16 +85,22 @@ or send it the data on the 'create_new' method is called
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"+55555", :email=>"email@email.com", 
 			:login=>"some_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
 
+##Update Method
+
 Also you can update your consumers and groups fields
 
 	consumer.update({:login => "new_login", :cell => "new cell phone"})
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"new cell phone", :invited=>false, :email=>"email@email.com", 
 			:login=>"new_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
 
+##Delete a Consumer or Group
+
 and you can delete it too :)
 
 	consumer.delete
 	=> true
+
+##See Errors
 
 you can see the errors when something happend with :errors method, it should return an comma separated string with all the errors
 
