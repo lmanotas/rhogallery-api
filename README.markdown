@@ -81,3 +81,14 @@ and you can delete it too :)
 
 	consumer.delete
 	=> true
+
+you can see the errors when something happend with :errors method, it should return an comma separated string with all the errors
+
+	group = RhoGallery::Group.new
+	=> #<RhoGallery::Group:0x1018881c7 @attributes={:name => ""}>
+	group.create_new
+	=> false
+	
+	group.errors
+	=> "Name can't be blank"
+
