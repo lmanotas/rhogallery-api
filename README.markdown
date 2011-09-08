@@ -45,16 +45,15 @@ You can get all your consumers and groups like this:
 	=> [{"name":"John Doe","devices":["ios","android","blackberry"],"deactivated_id":null,
 			"created_at":"2011-01-14T17:49:42Z","cell":"+555555",
 			"updated_at":"2011-06-21T21:14:12Z",
-			"admin_id":"4d2c9e31f3fda97a3e000006",
-			"account_id":null,"tags":"","deleted":false,"password":"f3df5b5853c26e9b664262a5f590df8d",
+			"tags":"","deleted":false,"password":"f3df5b5853c26e9b664262a5f590df8d",
 			"login":"john","invited":true,
-			"gallery_id":null,"email":"john@doe.com","active":true}]
+			"email":"john@doe.com","active":true}]
 	
 	RhoGallery::Group.find_all
 	=> [{"name":"rhomobile","created_at":"2011-01-14T15:37:42Z","updated_at":"2011-01-14T15:37:42Z",
-			"admin_id":"4d2e11dae433c241e9000001","id":"4d306dc697fcc274a6000009","active":true},
+			"id":"4d306dc697fcc274a6000009","active":true},
 			{"name":"koombea","created_at":"2011-05-27T22:24:05Z","updated_at":"2011-05-27T22:24:05Z",
-			"admin_id":"4d2e11dae433c241e9000001","id":"4de024851189870001000001","active":true}]
+			"id":"4de024851189870001000001","active":true}]
 
 or if you want to find a consumer/group by id you can do this:
 
@@ -62,14 +61,13 @@ or if you want to find a consumer/group by id you can do this:
 	=> {"name":"John Doe","devices":["ios","android","blackberry"],"deactivated_id":null,
 			"created_at":"2011-01-14T17:49:42Z","cell":"+555555",
 			"updated_at":"2011-06-21T21:14:12Z",
-			"admin_id":"4d2c9e31f3fda97a3e000006",
-			"account_id":null,"tags":"","deleted":false,"password":"f3df5b5853c26e9b664262a5f590df8d",
+			"tags":"","deleted":false,"password":"f3df5b5853c26e9b664262a5f590df8d",
 			"login":"john","invited":true,
-			"gallery_id":null,"email":"john@doe.com","active":true}
+			"email":"john@doe.com","active":true}
 
 	RhoGallery::Group.find_by_id("some_group_id")
 	=> {"name":"rhomobile","created_at":"2011-01-14T15:37:42Z","updated_at":"2011-01-14T15:37:42Z",
-			"admin_id":"4d2e11dae433c241e9000001","id":"4d306dc697fcc274a6000009","active":true}
+			"id":"4d306dc697fcc274a6000009","active":true}
 
 ##Create new consumer/group
 
