@@ -6,5 +6,4 @@ require "rhogallery-api/rho_gallery"
 require "rhogallery-api/base"
 require "rhogallery-api/consumer"
 require "rhogallery-api/group"
-
 ENV['rhogallery_api_url'] = "https://appstaging.rhohub.com/rhogallery/api/v1/:username/:resource.json"
