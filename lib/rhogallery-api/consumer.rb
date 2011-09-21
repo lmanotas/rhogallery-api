@@ -1,32 +1,30 @@
-module RhoGallery
-  class Consumer < RhoGalleryApi
-    
-    def create_new(data = @attributes, options = RhoGalleryApi.credentials, resource = "consumers")
-      super(data, options, resource)
-    end
+class RhoGallery::Consumer < RhoGallery::Base
   
-    def update(data = @attributes, options = RhoGalleryApi.credentials, resource = "consumers/#{self.id}")
-      if super(data, options, resource)
-        @attributes = Consumer::find_by_id(self.id, options).get_attributes
-        self
-      else
-        false
-      end
-    end
-  
-    def delete(options = RhoGalleryApi.credentials, resource = "consumers/#{self.id}")
-      super(options, resource)
-    end
-  
-    def self.find_by_id(id = "", options = RhoGalleryApi.credentials)
-      consumer = RhoGalleryApi.find_by_id(id, options, "consumers")
-      Consumer.new(RhoGalleryApi.prepare_hash(consumer))
-    end
-  
-    def self.find_all(options = RhoGalleryApi.credentials)
-      consumers = RhoGalleryApi.find_all(options, "consumers")
-      consumers.collect!{|consumer| Consumer.new(RhoGalleryApi.prepare_hash(consumer))} unless consumers.empty?
-    end
-  
+  def create_new(data = @attributes, options = RhoGallery.credentials, resource = "consumers")
+    super(data, options, resource)
   end
+
+  def update(data = @attributes, options = RhoGallery.credentials, resource = "consumers/#{self.id}")
+    if super(data, options, resource)
+      @attributes = RhoGallery::Consumer::find_by_id(self.id, options).get_attributes
+      self
+    else
+      false
+    end
+  end
+
+  def delete(options = RhoGallery.credentials, resource = "consumers/#{self.id}")
+    super(options, resource)
+  end
+
+  def self.find_by_id(id = "", options = RhoGallery.credentials)
+    consumer = RhoGallery::Base.find_by_id(id, options, "consumers")
+    RhoGallery::Consumer.new(RhoGallery.prepare_hash(consumer))
+  end
+
+  def self.find_all(options = RhoGallery.credentials)
+    consumers = RhoGallery::Base.find_all(options, "consumers")
+    consumers.collect!{|consumer| RhoGallery::Consumer.new(RhoGallery.prepare_hash(consumer))} unless consumers.empty?
+  end
+
 end

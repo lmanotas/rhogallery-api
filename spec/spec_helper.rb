@@ -19,26 +19,26 @@ class SpecHelpers
   end
   
   def stub_groups_methods
-    stub_request(:get, RhoGalleryApi.resource_url("testuser", "groups")).
+    stub_request(:get, RhoGallery.resource_url("testuser", "groups")).
       to_return({:body => [@rhomobile_group, @koombea_group].to_json})
-    stub_request(:get, RhoGalleryApi.resource_url("testuser", "groups/4e6146d5bdd0c8048c000004")).
+    stub_request(:get, RhoGallery.resource_url("testuser", "groups/4e6146d5bdd0c8048c000004")).
       to_return({:body => @koombea_group.to_json})
-    stub_request(:post, RhoGalleryApi.resource_url("testuser", "groups")).
+    stub_request(:post, RhoGallery.resource_url("testuser", "groups")).
       to_return({:status => 201, :body => "true"})
-    stub_request(:delete, RhoGalleryApi.resource_url("testuser", "groups/4e6146d5bdd0c8048c000004")).
+    stub_request(:delete, RhoGallery.resource_url("testuser", "groups/4e6146d5bdd0c8048c000004")).
       to_return({:body => "true", :status => 200})  
   end
   
   def stub_consumers_methods
-    stub_request(:get, RhoGalleryApi.resource_url("testuser", "consumers")).
+    stub_request(:get, RhoGallery.resource_url("testuser", "consumers")).
       to_return({:body => [@rho_consumer].to_json})
-    stub_request(:get, RhoGalleryApi.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
+    stub_request(:get, RhoGallery.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
       to_return({:body => @rho_consumer.to_json})
-    stub_request(:post, RhoGalleryApi.resource_url("testuser", "consumers")).
+    stub_request(:post, RhoGallery.resource_url("testuser", "consumers")).
       to_return({:status => 201, :body => "true"})
-    stub_request(:put, RhoGalleryApi.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
+    stub_request(:put, RhoGallery.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
       to_return({:body => "true", :status => 200})
-    stub_request(:delete, RhoGalleryApi.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
+    stub_request(:delete, RhoGallery.resource_url("testuser", "consumers/4e6146d5bdd0c8048c000004")).
       to_return({:body => "true", :status => 200})
   end
   
