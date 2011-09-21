@@ -7,5 +7,4 @@ require "rhogallery-api/base"
 require "rhogallery-api/consumer"
 require "rhogallery-api/group"
 
-#ENV['rhogallery_api_url'] = "https://appstaging.rhohub.com/rhogallery/api/v1/:username/:resource.json"
-ENV['rhogallery_api_url'] = "http://rhohub.local/rhogallery/api/v1/:username/:resource.json"
+ENV['rhogallery_api_url'] = "https://appstaging.rhohub.com/rhogallery/api/v1/:username/:resource.json"
