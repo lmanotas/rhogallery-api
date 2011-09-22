@@ -17,7 +17,7 @@ First of all you need to set your rhogallery credentials (username and rhogaller
 Also, you can see your credentials any time with:
 
 	RhoGalleryApi.credentials
-	=> {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_RHOGALLERY_TOKEN}
+	=> {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_TOKEN}
 
 ##Rhogallery Resources
 
