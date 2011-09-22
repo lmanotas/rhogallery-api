@@ -6,7 +6,7 @@ This is a ruby interface to connect with the rhohub rhogallery api.
 
 	$ gem install rhogallery
 
-	require 'rhogallery-api'
+	require 'rhogallery'
 
 ##Rhogallery Credentials
 

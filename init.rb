@@ -1,1 +1,1 @@
-require 'rhogallery-api'
+require 'rhogallery'
