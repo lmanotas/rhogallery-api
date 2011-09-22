@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.date        = Time.now.strftime('%Y-%m-%d')
   s.email       = ["support@rhomobile.com"]
   s.homepage    = %q{http://rhomobile.com}
-  s.summary     = %q{Rhogallery plugin}
-  s.description = %q{Rhogallery api client}
+  s.summary     = %q{RhoGallery client}
+  s.description = %q{RhoGallery api client }
 
   s.rubyforge_project = nil  
   s.add_dependency('json', '~>1.5.4')
