@@ -12,7 +12,7 @@ This is a ruby interface to connect with the rhohub rhogallery api.
 
 First of all you need to set your rhogallery credentials (username and rhogallery token):
 
-	RhoGalleryApi.credentials = {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOGALLERY_TOKEN}
+	RhoGalleryApi.credentials = {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_TOKEN}
 
 Also, you can see your credentials any time with:
 
