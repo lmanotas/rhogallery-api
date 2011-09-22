@@ -1,6 +1,6 @@
-Rhogallery API
+RhoGallery API
 ==================
-##Instaling
+##Getting Started
 
 This is a ruby interface to connect with the rhohub rhogallery api. 
 
@@ -8,29 +8,29 @@ This is a ruby interface to connect with the rhohub rhogallery api.
 
 	require 'rhogallery'
 
-##Rhogallery Credentials
+##RhoGallery Credentials
 
-First of all you need to set your rhogallery credentials (username and rhogallery token):
+First of all you need to set your RhoGallery credentials (username and rhogallery token):
 
-	RhoGalleryApi.credentials = {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_TOKEN}
+	RhoGallery.credentials = {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_TOKEN}
 
 Also, you can see your credentials any time with:
 
-	RhoGalleryApi.credentials
+	RhoGallery.credentials
 	=> {:username => YOUR_RHOHUB_USERNAME, :token => YOUR_RHOHUB_TOKEN}
 
-##Rhogallery Resources
+##RhoGallery Resources
 
 Then you have two classes that you can work with: `RhoGallery::Consumer` and `RhoGallery::Group`
 
-	RhoGalleryApi # Rhogallery Api Defaults configurations
+	RhoGallery # Rhogallery main module
 	
 	RhoGallery::Consumer 
 	RhoGallery::Group
 		
-	  create_new(data, options) #create a new consumer/group
-	  update(data, options)     #use this method to update data
-	  delete(data, options)     #to delete a consumer/group
+	  create(data, options) 	# create a new consumer/group
+	  update(data, options)     # use this method to update data
+	  delete(data, options)     # to delete a consumer/group
 
 * data: consumer or group data, for example: name, cell, login, email. By default takes the data hash takes the attributes 
 	added when is creating the instance ( RhoGallery::Group.new( {:name => "some group name" }) ).
@@ -57,7 +57,7 @@ You can get all your consumers and groups like this:
 
 or if you want to find a consumer/group by id you can do this:
 
-	RhoGallery::Consumer.find_by_id("some_consumer_id")
+	RhoGallery::Consumer.find("some_consumer_id")
 	=> {"name":"John Doe","devices":["ios","android","blackberry"],"deactivated_id":null,
 			"created_at":"2011-01-14T17:49:42Z","cell":"+555555",
 			"updated_at":"2011-06-21T21:14:12Z",
@@ -65,7 +65,7 @@ or if you want to find a consumer/group by id you can do this:
 			"login":"john","invited":true,
 			"email":"john@doe.com","active":true}
 
-	RhoGallery::Group.find_by_id("some_group_id")
+	RhoGallery::Group.find("some_group_id")
 	=> {"name":"rhomobile","created_at":"2011-01-14T15:37:42Z","updated_at":"2011-01-14T15:37:42Z",
 			"id":"4d306dc697fcc274a6000009","active":true}
 
@@ -78,22 +78,22 @@ You can create new groups and consumers with your own attributes and then save i
 	})
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:login => "some_login", :name => "some name", :cell => "+55555", :email => "email@email.com"}>
 	
-	consumer.create_new
+	consumer.save
 	=> true
 	
 	group = RhoGallery::Group.new({:name => "new_group_name"})
 	=> #<RhoGallery::Group:0x1018881b6 @attributes={:name=>"new_group_name"}>
 	
-	group.create_new
+	group.save
 	=> true
 
-or send it the data on the `create_new` method is called
+or send the data directly when `create` method is called
 
 	consumer = RhoGallery::Consumer.new
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"+55555", :email=>"email@email.com", 
 			:login=>"some_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
 			
-	consumer.create_new({
+	consumer.create({
 		:login => "some_login", :name => "some name", :cell => "+55555", :email => "email@email.com"
 	})
 	=> true
@@ -102,7 +102,7 @@ or send it the data on the `create_new` method is called
 
 Also you can update your consumers and groups fields with the `update`
 
-	consumer = RhoGallery::Consumer.find_by_id("4e60ffd4bdd0c8048c000001")
+	consumer = RhoGallery::Consumer.find("4e60ffd4bdd0c8048c000001")
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"some_cell_phone", :invited=>false, :email=>"email@email.com", 
 			:login=>"some_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
 
@@ -114,7 +114,7 @@ Also you can update your consumers and groups fields with the `update`
 
 and you can delete it too :)
 
-	consumer = RhoGallery::Consumer.find_by_id("4e60ffd4bdd0c8048c000001")
+	consumer = RhoGallery::Consumer.find("4e60ffd4bdd0c8048c000001")
 	=> #<RhoGallery::Consumer:0x1018881a8 @attributes={:cell=>"new cell phone", :invited=>false, :email=>"email@email.com", 
 			:login=>"new_login",:tags=>"", :password=>"", :name=>"hello", :id=>"4e60ffd4bdd0c8048c000001"}>
 
@@ -123,11 +123,11 @@ and you can delete it too :)
 
 ##See Errors
 
-you can see the errors when the create_new and update methods returns false, with errors method. Example
+You can see the errors when the `create` and `update` methods return false, using the errors method. For example:
 
 	group = RhoGallery::Group.new
 	=> #<RhoGallery::Group:0x1018881c7 @attributes={:name => ""}>
-	group.create_new
+	group.save
 	=> false
 	
 	group.errors

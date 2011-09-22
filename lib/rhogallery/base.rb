@@ -19,7 +19,7 @@ class RhoGallery::Base
     @attributes
   end
   
-  def create_new(data, options, resource)
+  def create(data, options, resource)
     begin
       RestClient.post RhoGallery.resource_url(options[:username], resource), data, {:Authorization => options[:token]}
       @errors = String.new
@@ -46,12 +46,16 @@ class RhoGallery::Base
     true
   end
   
+  def save(data, options, resource)
+    self.id ? update(data, options, resource) : create(data, options, resource)
+  end
+  
   def self.find_all(options, resource)
     res = RestClient::Resource.new(RhoGallery.resource_url(options[:username], "#{resource}"), :headers => {:Authorization => options[:token]})
     JSON.parse res.get
   end
 
-  def self.find_by_id(id, options, resource)
+  def self.find(id, options, resource)
     res = RestClient::Resource.new(RhoGallery.resource_url(options[:username], "#{resource}/#{id}"), :headers => {:Authorization => options[:token]})
     JSON.parse res.get
   end

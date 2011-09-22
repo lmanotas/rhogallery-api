@@ -1,6 +1,10 @@
 class RhoGallery::Group < RhoGallery::Base
 
-  def create_new(data = @attributes, options = RhoGallery.credentials, resource = "groups")
+  def create(data = @attributes, options = RhoGallery.credentials, resource = "groups")
+    super(data, options, resource)
+  end
+
+  def save(data = @attributes, options = RhoGallery.credentials, resource = "groups")
     super(data, options, resource)
   end
 
@@ -17,8 +21,8 @@ class RhoGallery::Group < RhoGallery::Base
     groups.collect!{|group| RhoGallery::Group.new(RhoGallery.prepare_hash(group))} unless groups.empty?
   end
 
-  def self.find_by_id(id, options = RhoGallery.credentials)
-    group = RhoGallery::Base.find_by_id(id, options, "groups")
+  def self.find(id, options = RhoGallery.credentials)
+    group = RhoGallery::Base.find(id, options, "groups")
     RhoGallery::Group.new(RhoGallery.prepare_hash(group))
   end
 
