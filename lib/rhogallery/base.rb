@@ -47,7 +47,7 @@ class RhoGallery::Base
   end
   
   def save(data, options, resource)
-    self.id ? update(data, options, resource) : create(data, options, resource)
+    self.id ? update(data, options, "#{resource}/#{self.id}") : create(data, options, resource)
   end
   
   def self.find_all(options, resource)
