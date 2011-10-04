@@ -67,7 +67,7 @@ class RhoGallery::Base
       if @attributes[att.to_sym]
         @attributes[att.to_sym] = arguments.to_s
       else
-        super
+        @attributes.merge!({att.to_sym => arguments.to_s})
       end
     else
       att = @attributes[method_sym]

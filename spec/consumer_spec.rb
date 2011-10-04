@@ -65,8 +65,9 @@ describe RhoGallery::Consumer do
       @consumer.login = "the_new_login"
       @consumer.login.should == "the_new_login"
     end
-    it "should raise an error when an set attribute doesn't exist" do
-      lambda { @consumer.wrong_attribute = "some value" }.should raise_error
+    it "shouldn't raise an error when an set attribute doesn't exist, and should add it to attributes" do
+      @consumer.some_attribute = "some value"
+      @consumer.some_attribute.should == "some value"
     end
   end
 end
