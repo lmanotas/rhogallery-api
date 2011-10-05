@@ -42,8 +42,12 @@ class RhoGallery::Base
   end
   
   def delete(options, resource)
-    RestClient.delete RhoGallery.resource_url(options[:username], resource), {:Authorization => options[:token]}
-    true
+    if self.id
+      RestClient.delete RhoGallery.resource_url(options[:username], resource), {:Authorization => options[:token]}
+      true
+    else
+      false
+    end
   end
   
   def save(data, options, resource)
